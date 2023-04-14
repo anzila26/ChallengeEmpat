@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".HomeFragment">
+
+    <TextView
+        android:id="@+id/txtWel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, " />
+
+    <TextView
+        android:id="@+id/txtHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWel"
+        android:text="Home"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txtHome" />
+
+    <ImageView
+        android:id="@+id/btnAdd"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_add_foreground"/>
+</RelativeLayout>
