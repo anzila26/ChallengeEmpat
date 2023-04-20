@@ -1,22 +1,22 @@
 package anzila.binar.challengeempat
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import anzila.binar.challengeempat.databinding.FragmentInputBinding
+import anzila.binar.challengeempat.room.NoteData
 import anzila.binar.challengeempat.room.NoteDatabase
-import anzila.binar.challengeempat.room.NoteDatabaseDao
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
 class InputFragment : Fragment() {
     lateinit var binding : FragmentInputBinding
     var noteDB : NoteDatabase? = null
+    lateinit var noteVM: NoteVM
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +28,9 @@ class InputFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        noteDB = NoteDatabase.getInstance(this)
+
+        noteDB = NoteDatabase.getInstance(requireContext())
+        noteVM = ViewModelProvider(requireActivity())[NoteVM::class.java]
 
         binding.btnSave.setOnClickListener {
             addData()
@@ -37,10 +39,10 @@ class InputFragment : Fragment() {
 
     fun addData(){
         GlobalScope.async {
-            var title = binding.etJudul.
+            var title = binding.etJudul.text.toString()
             var content = binding.etIsi.text.toString()
-            noteDB?.noteDatabaseDao()?.insertData(NoteDatabaseDao(0, title, content))
+            noteVM.insertNote(NoteData(title=title,content=content))
+            findNavController().navigate(R.id.action_inputFragment_to_homeFragment)
         }
-        finish()
     }
 }

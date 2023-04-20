@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="15dp"
-    android:layout_width="320dp"
-    android:layout_height="260dp"
+    android:padding="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".InputFragment">
 
     <TextView
@@ -11,42 +11,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Input Data"
+        android:textSize="30sp"
         android:layout_centerHorizontal="true"/>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/etJudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtInput"
         android:hint="Masukkan Judul"
-        android:layout_marginTop="15dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_below="@+id/txtInput"
+        android:layout_marginTop="10dp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/etIsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etJudul"
-        android:hint="Masukkan Catatan"
-        android:layout_marginTop="8dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:hint="Masukkan Isi Konten"
+        android:layout_below="@+id/etJudul"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="14dp"/>
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Input"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_below="@+id/etIsi"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
